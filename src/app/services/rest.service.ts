@@ -18,6 +18,18 @@ export class RestService {
     });
   }
 
+  getSensorDataByID(sensortype, sensorID, count) {
+    return this.httpClient.post('https://piebrain.net/api/sensorData/query', {
+      id: sensorID,
+      name: sensortype
+    },
+      {
+        headers: {
+          limit: count
+        }
+      });
+  }
+
   changeLight(id, value) {
     return this.httpClient.post('https://piebrain.net/api/leds',
       {

@@ -10,6 +10,7 @@ export class SliderComponent implements OnInit {
   val = -1;
 
   selectedValue: string;
+
   ids = [
     { value: 1 },
     { value: 2 },
@@ -24,9 +25,5 @@ export class SliderComponent implements OnInit {
   changeLight(value) {
     this.rest.changeLight(this.selectedValue, value);
     console.log(this.selectedValue);
-  }
-
-  damn() {
-    console.log('aw');
   }
 }

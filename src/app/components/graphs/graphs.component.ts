@@ -8,17 +8,41 @@ import {RestService} from '../../services/rest.service';
 })
 export class GraphsComponent implements OnInit {
   data: object;
-  graphData: any;
+  graphData;
+
+  selectedValue: number;
+  ids = [
+    { value: 1 },
+    { value: 2 },
+    { value: 3 }
+  ];
+
+  selectedSensor = 'temperature';
+  sensors = [
+    { value: 'temperature'},
+    { value: 'humidity' },
+    { value: 'soil' },
+    { value: 'light' }
+  ];
+
 
   constructor(private rest: RestService) {
-   this.rest.getSensorDataByType('temperature', 10).toPromise().then(res => {
-     this.graphData = res;
-   }).then(() => {
-     this.data = {
-       chart: { },
-       data: this.graphData.data
-     };
-   });
+
+
+ this.getSensorData(10);
+
+  }
+
+  getSensorData(count) {
+    this.rest.getSensorDataByID(this.selectedSensor, this.selectedValue, count).toPromise().then(res => {
+      this.graphData = res;
+    }).then(() => {
+      this.data = {
+        chart: { },
+        data: this.graphData.data
+      };
+      console.log(this.selectedSensor);
+    });
 
   }
 

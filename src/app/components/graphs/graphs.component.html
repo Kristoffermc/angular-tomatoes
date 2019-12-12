@@ -1,20 +1,44 @@
 <div *ngIf="graphData">
-<h2>Temperature Column</h2>
-<fusioncharts
-  width="100%"
-  height="500"
-  type="column3d"
-  dataFormat="json"
-  [dataSource]="data" >
-</fusioncharts>
+
+  <h1>Graph component</h1>
+
+  <mat-form-field>
+    <mat-select (selectionChange)="getSensorData(10)"
+                placeholder = "Select ID"
+                [(ngModel)]= "selectedValue" name = "ID">
+      <mat-option *ngFor = "let id of ids"
+                  [value] = "id.value">
+        {{id.value}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select (selectionChange)="getSensorData(10)"
+                placeholder = "Select sensor"
+                [(ngModel)]= "selectedSensor" name = "Sensor">
+      <mat-option *ngFor = "let s of sensors"
+                  [value] = "s.value">
+        {{s.value}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <h2>{{selectedSensor}} Column</h2>
+  <fusioncharts
+    width="100%"
+    height="500"
+    type="column3d"
+    dataFormat="json"
+    [dataSource]="data" >
+  </fusioncharts>
 
 
-<h2>Temperature Line</h2>
-<fusioncharts
-  width="100%"
-  height="500"
-  type="line"
-  dataFormat="json"
-  [dataSource]="data" >
-</fusioncharts>
+  <h2>{{selectedSensor}} Line</h2>
+  <fusioncharts
+    width="100%"
+    height="500"
+    type="line"
+    dataFormat="json"
+    [dataSource]="data" >
+  </fusioncharts>
 </div>
