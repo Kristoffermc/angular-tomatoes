@@ -18,10 +18,10 @@ export class RestService {
     });
   }
 
-  changeLight(value) {
+  changeLight(id, value) {
     return this.httpClient.post('https://piebrain.net/api/leds',
       {
-        ledId: 1,
+        ledId: id,
         ledValue: value
       }).toPromise().then(res => {
       console.log(res);
