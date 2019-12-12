@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import {RestService} from './services/rest.service';
-import {SocketService} from './services/socket.service';
+import { SocketService } from './services/socket.service';
 
 @Component({
   selector: 'app-root',
