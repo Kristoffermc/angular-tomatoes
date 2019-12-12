@@ -7,15 +7,15 @@ import {RestService} from '../../services/rest.service';
   styleUrls: ['./slider.component.css']
 })
 export class SliderComponent implements OnInit {
+  val = -1;
 
   constructor(private rest: RestService) {
-    this.changeLight();
   }
 
   ngOnInit() {}
 
-  changeLight() {
-    console.log(this.rest.changeLight(100));
+  changeLight(value) {
+    this.rest.changeLight(value);
   }
 
 }
