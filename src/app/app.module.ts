@@ -13,6 +13,8 @@ import {FusionChartsModule} from 'angular-fusioncharts';
 import * as FusionCharts from 'fusioncharts';
 // Load FusionCharts Individual Charts
 import * as Charts from 'fusioncharts/fusioncharts.charts';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSliderModule } from '@angular/material/slider';
 
 // Use fcRoot function to inject FusionCharts library, and the modules you want to use
 FusionChartsModule.fcRoot(FusionCharts, Charts);
@@ -30,7 +32,10 @@ const socketConfig: SocketIoConfig = { url: 'http://piebrain.net:3002', options:
     BrowserModule,
     HttpClientModule,
     FusionChartsModule,
-    SocketIoModule.forRoot(socketConfig)
+    SocketIoModule.forRoot(socketConfig),
+    BrowserAnimationsModule,
+    MatSliderModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

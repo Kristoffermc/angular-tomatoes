@@ -10,7 +10,6 @@ export class RestService {
     private httpClient: HttpClient
   ) {}
 
-
   getSensorDataByType(sensortype, count) {
     return this.httpClient.get('https://piebrain.net/api/sensorData/name/' + sensortype, {
       headers: {
@@ -18,7 +17,6 @@ export class RestService {
       }
     });
   }
-
 
   changeLight(value) {
     return this.httpClient.post('https://piebrain.net/api/leds', {
