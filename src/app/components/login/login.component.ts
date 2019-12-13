@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {RestService} from '../../services/rest.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   hide = true;
   restService = null;
-  constructor(private router: Router, private rest: RestService) {
+  constructor(private router: Router, private rest: RestService, private snackBar: MatSnackBar) {
     this.restService = rest;
   }
 
@@ -27,6 +28,8 @@ export class LoginComponent implements OnInit {
       user = res.data[0] ? res.data[0] : null;
       if (user && user.email === this.userEmail && user.password === this.userPw) {
         this.router.navigate(['overview'], {queryParams: {id: user._id}});
+      } else {
+        this.snackBar.open('Invalid login', null, {duration: 2000});
       }
     });
   }
