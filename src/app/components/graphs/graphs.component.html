@@ -1,6 +1,5 @@
 <div *ngIf="graphData">
 
-  <h1>Graph component</h1>
   <mat-form-field>
     <mat-select (selectionChange)="getSensorData(10)"
                 placeholder = "Select ID"
@@ -22,22 +21,11 @@
     </mat-select>
   </mat-form-field>
 
-  <h2>{{selectedSensor}} Column</h2>
   <fusioncharts
     width="100%"
     height="500"
-    type="column3d"
+    type="timeseries"
     dataFormat="json"
-    [dataSource]="data" >
-  </fusioncharts>
-
-
-  <h2>{{selectedSensor}} Line</h2>
-  <fusioncharts
-    width="100%"
-    height="500"
-    type="line"
-    dataFormat="json"
-    [dataSource]="data" >
+    [dataSource]="dataSource" >
   </fusioncharts>
 </div>
