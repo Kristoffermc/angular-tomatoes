@@ -19,6 +19,7 @@ import * as FusionCharts from 'fusioncharts';
 // Load FusionCharts Individual Charts
 import * as Charts from 'fusioncharts/fusioncharts.charts';
 import { LoginComponent } from './components/login/login.component';
+import { DetailComponent } from './components/detail/detail.component';
 
 // Use fcRoot function to inject FusionCharts library, and the modules you want to use
 FusionChartsModule.fcRoot(FusionCharts, Charts);
@@ -32,7 +33,8 @@ const socketConfig: SocketIoConfig = { url: 'http://piebrain.net:3002', options:
     SliderComponent,
     GraphsComponent,
     OverviewComponent,
-    LoginComponent
+    LoginComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ const socketConfig: SocketIoConfig = { url: 'http://piebrain.net:3002', options:
     MatGridListModule,
     RouterModule.forRoot([
       { path: 'overview', component: OverviewComponent },
-      { path: 'info', component: GraphsComponent },
+      { path: 'info', component: DetailComponent },
       { path: '', component: LoginComponent }
     ])
 
