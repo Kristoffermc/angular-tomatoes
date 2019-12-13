@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as FusionCharts from 'fusioncharts';
 import {RestService} from '../../services/rest.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-detail',
@@ -8,16 +9,12 @@ import {RestService} from '../../services/rest.service';
   styleUrls: ['./detail.component.css']
 })
 export class DetailComponent implements OnInit {
+  val: -1;
   dataSource: any;
   data: object;
   graphData;
 
   selectedValue = 1;
-  ids = [
-    { value: 1 },
-    { value: 2 },
-    { value: 3 }
-  ];
 
   selectedSensor = 'temperature';
   sensors = [
@@ -28,7 +25,12 @@ export class DetailComponent implements OnInit {
   ];
 
 
-  constructor(private rest: RestService) {
+  constructor(private rest: RestService,
+              private router: Router) {
+    this.router.routerState.root.queryParams
+      .subscribe(params => {
+        this.selectedValue = params.paramID;
+      });
 
     this.dataSource = {
       data: null,
