@@ -8,8 +8,13 @@ export class SocketService {
 
   constructor(private socket: Socket) { }
 
-  getSocketSensor(sensorId) {
+  getSocketSensorPackageUpdates(sensorId) {
     return this.socket
       .fromEvent('sensordata/' + sensorId);
+  }
+
+  getSocketSensorInSensorPackage(sensorPackageId, sensor) {
+    return this.socket
+      .fromEvent('sensordata/' + sensorPackageId + '/' + sensor);
   }
 }

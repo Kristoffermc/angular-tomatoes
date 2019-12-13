@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'angular-tomatoes';
 
   constructor(private socket: SocketService) {
-    this.socket.getSocketSensor(1).subscribe(data => {
+    this.socket.getSocketSensorPackageUpdates(1).subscribe(data => {
       const mapped: any = data;
       console.log(mapped.id, mapped.name, mapped.value, mapped.timestamp);
     });
