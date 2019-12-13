@@ -30,6 +30,8 @@ export class DetailComponent implements OnInit {
     { value: 'light' }
   ];
 
+  configValue: number;
+
   constructor(private rest: RestService,
               private router: Router,
               private socket: SocketService) {
@@ -131,9 +133,12 @@ export class DetailComponent implements OnInit {
     });
   }
 
+  updateInterval() {
+    this.rest.updateDeviceConfig(this.selectedValue, this.configValue);
+  }
+
   changeLight(value) {
     this.rest.changeLight(this.selectedValue, value);
-    console.log(this.selectedValue);
   }
 
 }

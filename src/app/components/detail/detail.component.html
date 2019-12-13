@@ -37,3 +37,11 @@ ID: {{selectedValue}}
     [dataSource]="dataSource" >
   </fusioncharts>
 </div>
+<br>
+<form>
+  <mat-form-field>
+    <input [(ngModel)]="configValue" [ngModelOptions]="{standalone: true}" matInput placeholder="Interval">
+  </mat-form-field>
+  &nbsp;
+  <button mat-raised-button color="primary" (click)="updateInterval()">Update interval</button>
+</form>
