@@ -28,8 +28,8 @@ export class OverviewComponent implements OnInit {
   ngOnInit() {
   }
 
-  navigateInfo() {
-    this.router.navigate(['info']);
+  navigateInfo(id) {
+    this.router.navigate(['info'], {queryParams: {paramID: id}});
   }
 
 }

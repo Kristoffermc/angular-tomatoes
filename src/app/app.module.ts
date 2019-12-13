@@ -3,8 +3,6 @@ import { NgModule } from '@angular/core';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from '@angular/common/http';
-import { SliderComponent } from './components/slider/slider.component';
-import { GraphsComponent } from './components/graphs/graphs.component';
 import {FusionChartsModule} from 'angular-fusioncharts';
 
 
@@ -33,8 +31,6 @@ const socketConfig: SocketIoConfig = { url: 'http://piebrain.net:3002', options:
 @NgModule({
   declarations: [
     AppComponent,
-    SliderComponent,
-    GraphsComponent,
     OverviewComponent,
     LoginComponent,
     DetailComponent
