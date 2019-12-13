@@ -4,11 +4,11 @@
   <br>
   <form>
     <mat-form-field class="width">
-      <input matInput placeholder="Enter your username">
+      <input [(ngModel)]="userEmail" [ngModelOptions]="{standalone: true}" matInput placeholder="Enter your username">
     </mat-form-field>
     <br>
     <mat-form-field class="width">
-      <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+      <input [(ngModel)]="userPw" [ngModelOptions]="{standalone: true}" matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
       <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </button>

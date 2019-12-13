@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {RestService} from '../../services/rest.service';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,25 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  userEmail: string;
+  userPw: string;
+
   hide = true;
-  constructor(private router: Router) {
+  restService = null;
+  constructor(private router: Router, private rest: RestService) {
+    this.restService = rest;
   }
 
   ngOnInit() {
   }
 
   login() {
-    this.router.navigate(['overview']);
+    let user = null;
+    this.restService.getUser(this.userEmail, this.userPw).toPromise().then(res => {
+      user = res.data[0] ? res.data[0] : null;
+      if (user && user.email === this.userEmail && user.password === this.userPw) {
+        this.router.navigate(['overview']);
+      }
+    });
   }
 }

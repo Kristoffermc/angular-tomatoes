@@ -44,4 +44,11 @@ export class RestService {
     return this.httpClient.get('https://piebrain.net/api/sensorpackages/').toPromise();
   }
 
+  getUser(userEmail, userPassword) {
+    return this.httpClient.post('https://piebrain.net/api/users/query', {
+      email: userEmail,
+      password: userPassword
+    });
+  }
+
 }
