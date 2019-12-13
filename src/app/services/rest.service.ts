@@ -40,4 +40,8 @@ export class RestService {
     });
   }
 
+  getSensorPackages() {
+    return this.httpClient.get('https://piebrain.net/api/sensorpackages/').toPromise();
+  }
+
 }
