@@ -40,8 +40,11 @@ export class RestService {
     });
   }
 
-  getSensorPackages() {
-    return this.httpClient.get('https://piebrain.net/api/sensorpackages/').toPromise();
+  getSensorPackages(id) {
+    return this.httpClient.post('https://piebrain.net/api/sensorpackages/query',
+      {
+        owner: id
+      }).toPromise();
   }
 
   getUser(userEmail, userPassword) {

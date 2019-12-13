@@ -10,17 +10,20 @@ import {RestService} from '../../services/rest.service';
 export class OverviewComponent implements OnInit {
   sensorPackages = [];
   sensors;
+
+  id;
   constructor(private router: Router,
               private rest: RestService) {
-    this.rest.getSensorPackages().then(res => {
+    this.router.routerState.root.queryParams
+      .subscribe(params => {
+        this.id = params.id;
+      });
 
+    this.rest.getSensorPackages(this.id).then(res => {
       this.sensorPackages.push(res);
       this.sensors = this.sensorPackages[0].data;
-      console.log(this.sensors);
     });
   }
-
-  //      console.log(this.sensorPackages[0].data[0]);
 
   ngOnInit() {
   }
