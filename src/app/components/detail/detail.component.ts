@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import * as FusionCharts from 'fusioncharts';
 import {RestService} from '../../services/rest.service';
 import {Router} from '@angular/router';
+import {SocketService} from "../../services/socket.service";
 
 @Component({
   selector: 'app-detail',
@@ -26,7 +27,8 @@ export class DetailComponent implements OnInit {
 
 
   constructor(private rest: RestService,
-              private router: Router) {
+              private router: Router,
+              private socket: SocketService) {
     this.router.routerState.root.queryParams
       .subscribe(params => {
         this.selectedValue = params.paramID;
@@ -55,10 +57,15 @@ export class DetailComponent implements OnInit {
     };
 
     this.getSensorData(10);
+
+    this.socket.getSocketSensorInSensorPackage(this.selectedValue, this.selectedSensor).subscribe(() => {
+      this.getSensorData(10);
+    });
   }
 
   ngOnInit() {
   }
+
 
 
   getSensorData(count) {
@@ -67,8 +74,6 @@ export class DetailComponent implements OnInit {
     }).then(() => {
       const dataMap = [];
       this.graphData.data.forEach(d => {
-        // const date = new Date(d.timestamp * 1000);
-        // dataMap.push({label: date.toDateString(), value: parseFloat(d.value)});
         dataMap.push([d.timestamp, parseFloat(d.value)]);
       });
       console.log(dataMap);
