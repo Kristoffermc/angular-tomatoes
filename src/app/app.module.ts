@@ -51,7 +51,7 @@ const socketConfig: SocketIoConfig = { url: 'http://piebrain.net:3002', options:
     RouterModule.forRoot([
       { path: 'overview', component: OverviewComponent },
       { path: 'info', component: GraphsComponent },
-      { path: 'login', component: LoginComponent }
+      { path: '', component: LoginComponent }
     ])
 
   ],
