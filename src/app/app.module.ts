@@ -16,7 +16,8 @@ import {
   MatGridListModule,
   MatIconModule,
   MatInputModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatSnackBarModule
 } from '@angular/material';
 import {OverviewComponent} from './components/overview/overview.component';
 import {RouterModule} from '@angular/router';
@@ -58,6 +59,7 @@ const socketConfig: SocketIoConfig = { url: 'http://piebrain.net:3002', options:
     MatIconModule,
     MatGridListModule,
     MatToolbarModule,
+    MatSnackBarModule,
     RouterModule.forRoot([
       { path: 'overview', component: OverviewComponent },
       { path: 'info', component: DetailComponent },
