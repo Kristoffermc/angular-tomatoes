@@ -6,6 +6,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { SliderComponent } from './components/slider/slider.component';
 import { GraphsComponent } from './components/graphs/graphs.component';
 import {FusionChartsModule} from 'angular-fusioncharts';
+
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatSelectModule} from '@angular/material/select';
@@ -18,11 +20,12 @@ import {MatCardModule} from '@angular/material/card';
 import * as FusionCharts from 'fusioncharts';
 // Load FusionCharts Individual Charts
 import * as Charts from 'fusioncharts/fusioncharts.charts';
+import * as TimeSeries from 'fusioncharts/fusioncharts.timeseries';
 import { LoginComponent } from './components/login/login.component';
 import { DetailComponent } from './components/detail/detail.component';
 
 // Use fcRoot function to inject FusionCharts library, and the modules you want to use
-FusionChartsModule.fcRoot(FusionCharts, Charts);
+FusionChartsModule.fcRoot(FusionCharts, Charts, TimeSeries);
 
 
 const socketConfig: SocketIoConfig = { url: 'http://piebrain.net:3002', options: {} };
