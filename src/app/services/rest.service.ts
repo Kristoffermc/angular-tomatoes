@@ -54,4 +54,10 @@ export class RestService {
     });
   }
 
+  updateDeviceConfig(id, updateInterval) {
+    return this.httpClient.post('https://piebrain.net/api/config/' + id, {
+      update_interval: updateInterval
+    });
+  }
+
 }
