@@ -57,16 +57,22 @@ export class DetailComponent implements OnInit {
     };
 
     this.getSensorData(10);
+    this.setLiveUpdate();
 
-    this.socket.getSocketSensorInSensorPackage(this.selectedValue, this.selectedSensor).subscribe(() => {
-      this.getSensorData(10);
-    });
+
   }
 
   ngOnInit() {
   }
 
-
+  setLiveUpdate() {
+    this.socket.getSocketSensorPackageUpdates(this.selectedValue).subscribe(data => {
+      const mapped: any = data;
+      if (mapped.name === this.selectedSensor) {
+        this.getSensorData(10);
+      }
+    });
+  }
 
   getSensorData(count) {
     this.rest.getSensorDataByID(this.selectedSensor, this.selectedValue, count).toPromise().then(res => {

@@ -13,8 +13,4 @@ export class SocketService {
       .fromEvent('sensordata/' + sensorId);
   }
 
-  getSocketSensorInSensorPackage(sensorPackageId, sensor) {
-    return this.socket
-      .fromEvent('sensordata/' + sensorPackageId + '/' + sensor);
-  }
 }
