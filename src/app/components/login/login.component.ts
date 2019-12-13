@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.restService.getUser(this.userEmail, this.userPw).toPromise().then(res => {
       user = res.data[0] ? res.data[0] : null;
       if (user && user.email === this.userEmail && user.password === this.userPw) {
-        this.router.navigate(['overview']);
+        this.router.navigate(['overview'], {queryParams: {id: user._id}});
       }
     });
   }
