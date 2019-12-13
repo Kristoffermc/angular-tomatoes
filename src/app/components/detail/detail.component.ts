@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import * as FusionCharts from 'fusioncharts';
 import {RestService} from '../../services/rest.service';
 import {Router} from '@angular/router';
-import {SocketService} from "../../services/socket.service";
+import {SocketService} from '../../services/socket.service';
 
 @Component({
   selector: 'app-detail',
@@ -17,6 +17,11 @@ export class DetailComponent implements OnInit {
 
   selectedValue = 1;
 
+  currentTemperature: string;
+  currentHumidity: string;
+  currentSoil: string;
+  currentLight: string;
+
   selectedSensor = 'temperature';
   sensors = [
     { value: 'temperature'},
@@ -24,7 +29,6 @@ export class DetailComponent implements OnInit {
     { value: 'soil' },
     { value: 'light' }
   ];
-
 
   constructor(private rest: RestService,
               private router: Router,
@@ -56,10 +60,9 @@ export class DetailComponent implements OnInit {
       ]
     };
 
+
     this.getSensorData(10);
     this.setLiveUpdate();
-
-
   }
 
   ngOnInit() {
@@ -70,6 +73,24 @@ export class DetailComponent implements OnInit {
       const mapped: any = data;
       if (mapped.name === this.selectedSensor) {
         this.getSensorData(10);
+      }
+
+      switch (mapped.name) {
+        case 'temperature':
+          this.currentTemperature = mapped.value;
+          break;
+        case 'humidity':
+          this.currentHumidity = mapped.value;
+          break;
+        case 'soil':
+          this.currentSoil = mapped.value;
+          break;
+        case 'light':
+          this.currentLight = mapped.value;
+          break;
+        default:
+          console.log('Something went wrong');
+          break;
       }
     });
   }

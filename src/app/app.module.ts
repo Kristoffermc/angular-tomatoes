@@ -10,7 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule} from '@angular/forms';
-import {MatButtonModule, MatFormFieldModule, MatGridListModule, MatIconModule, MatInputModule, MatSnackBarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatFormFieldModule,
+  MatGridListModule,
+  MatIconModule,
+  MatInputModule,
+  MatToolbarModule,
+  MatSnackBarModule
+} from '@angular/material';
 import {OverviewComponent} from './components/overview/overview.component';
 import {RouterModule} from '@angular/router';
 import {MatCardModule} from '@angular/material/card';
@@ -50,6 +58,7 @@ const socketConfig: SocketIoConfig = { url: 'http://piebrain.net:3002', options:
     MatInputModule,
     MatIconModule,
     MatGridListModule,
+    MatToolbarModule,
     MatSnackBarModule,
     RouterModule.forRoot([
       { path: 'overview', component: OverviewComponent },
