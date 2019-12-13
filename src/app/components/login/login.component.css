@@ -1,0 +1,17 @@
+.wrapper {
+  text-align: center;
+  height: 90%;
+}
+
+.center {
+  margin: 0 auto;
+}
+
+html,
+body {
+  height: 90%;
+}
+
+.width{
+  width: 200px;
+}

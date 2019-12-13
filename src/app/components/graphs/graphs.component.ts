@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {RestService} from '../../services/rest.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-graphs',
@@ -27,10 +28,7 @@ export class GraphsComponent implements OnInit {
 
 
   constructor(private rest: RestService) {
-
-
- this.getSensorData(10);
-
+    this.getSensorData(10);
   }
 
   getSensorData(count) {
@@ -43,8 +41,8 @@ export class GraphsComponent implements OnInit {
       };
       console.log(this.selectedSensor);
     });
-
   }
+
 
   ngOnInit() {
   }
