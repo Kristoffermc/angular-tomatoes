@@ -34,13 +34,13 @@ export class DetailComponent implements OnInit {
 
   updateValue = '50';
   updates = [
-    {value: '60', viewValue: '½ time'},
-    {value: '120', viewValue: '1 time'},
-    {value: '240', viewValue: '2 timer'},
-    {value: '480', viewValue: '4 timer'},
-    {value: '960', viewValue: '8 timer'},
-    {value: '1440', viewValue: '12 timer'},
-    {value: '2880', viewValue: '1 dag'}
+    {value: '60', viewValue: '½ hour'},
+    {value: '120', viewValue: '1 hour'},
+    {value: '240', viewValue: '2 hours'},
+    {value: '480', viewValue: '4 hours'},
+    {value: '960', viewValue: '8 hours'},
+    {value: '1440', viewValue: '12 hours'},
+    {value: '2880', viewValue: '1 day'}
   ];
 
   constructor(private rest: RestService,
