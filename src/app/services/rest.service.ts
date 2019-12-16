@@ -27,7 +27,7 @@ export class RestService {
         headers: {
           limit: count
         }
-      });
+    });
   }
 
   changeLight(id, value) {

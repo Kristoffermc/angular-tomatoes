@@ -32,6 +32,16 @@ export class DetailComponent implements OnInit {
 
   configValue: number;
 
+  updateValue = '50';
+  updates = [
+    {value: '25'},
+    {value: '50'},
+    {value: '100'},
+    {value: '200'},
+    {value: '500'},
+    {value: '1000'}
+  ];
+
   constructor(private rest: RestService,
               private router: Router,
               private socket: SocketService) {
@@ -63,7 +73,7 @@ export class DetailComponent implements OnInit {
     };
 
 
-    this.getSensorData(10);
+    this.getSensorData(null);
     this.setLiveUpdate();
   }
 
@@ -74,7 +84,7 @@ export class DetailComponent implements OnInit {
     this.socket.getSocketSensorPackageUpdates(this.selectedValue).subscribe(data => {
       const mapped: any = data;
       if (mapped.name === this.selectedSensor) {
-        this.getSensorData(10);
+        this.getSensorData(null);
       }
 
       switch (mapped.name) {
@@ -97,8 +107,15 @@ export class DetailComponent implements OnInit {
     });
   }
 
-  getSensorData(count) {
-    this.rest.getSensorDataByID(this.selectedSensor, this.selectedValue, count).toPromise().then(res => {
+  getSensorData(eventValue) {
+    if (eventValue) {
+      this.updateValue = '' + eventValue.value;
+    } else {
+      console.log('No eventValue');
+    }
+
+    console.log('GetSensorData ' + this.updateValue);
+    this.rest.getSensorDataByID(this.selectedSensor, this.selectedValue, this.updateValue).toPromise().then(res => {
       this.graphData = res;
     }).then(() => {
       const dataMap = [];

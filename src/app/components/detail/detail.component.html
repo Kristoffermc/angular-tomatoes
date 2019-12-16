@@ -17,6 +17,16 @@ ID: {{selectedValue}}
 
 <!--   GRAPH STARTS HERE -->
 
+<mat-form-field>
+  <mat-label>Number of data points</mat-label>
+  <mat-select (selectionChange)="getSensorData($event)" (input)="updateValue = $event.value">
+    <mat-option *ngFor="let u of updates" [value]="u.value">
+      {{u.value}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
 <div *ngIf="graphData">
   <mat-form-field>
     <mat-select (selectionChange)="getSensorData(10)"
