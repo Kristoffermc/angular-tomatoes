@@ -113,8 +113,6 @@ export class DetailComponent implements OnInit {
     } else {
       console.log('No eventValue');
     }
-
-    console.log('GetSensorData ' + this.updateValue);
     this.rest.getSensorDataByID(this.selectedSensor, this.selectedValue, this.updateValue).toPromise().then(res => {
       this.graphData = res;
     }).then(() => {
@@ -122,7 +120,6 @@ export class DetailComponent implements OnInit {
       this.graphData.data.forEach(d => {
         dataMap.push([d.timestamp, parseFloat(d.value)]);
       });
-      console.log(dataMap);
 
       this.dataSource.caption.text = 'Sensor: ' + this.selectedValue;
       this.dataSource.subcaption.text = this.selectedSensor;
@@ -146,7 +143,6 @@ export class DetailComponent implements OnInit {
         chart: { },
         data: dataMap
       };
-      console.log(this.selectedSensor);
     });
   }
 
