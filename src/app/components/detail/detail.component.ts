@@ -117,7 +117,7 @@ export class DetailComponent implements OnInit {
 
     const time = Math.floor((Date.now() / 1000) - 86400);
 
-    this.rest.getSensorDataByID(this.selectedSensor, this.selectedValue, this.updateValue, '' + time).toPromise().then(res => {
+    this.rest.getSensorDataByID(this.selectedSensor, this.selectedValue, this.updateValue).toPromise().then(res => {
       this.graphData = res;
       console.log(this.graphData);
     }).then(() => {
