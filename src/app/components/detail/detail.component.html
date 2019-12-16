@@ -21,7 +21,7 @@ ID: {{selectedValue}}
   <mat-label>Number of data points</mat-label>
   <mat-select (selectionChange)="getSensorData($event)" (input)="updateValue = $event.value">
     <mat-option *ngFor="let u of updates" [value]="u.value">
-      {{u.value}}
+      {{u.viewValue}}
     </mat-option>
   </mat-select>
 </mat-form-field>

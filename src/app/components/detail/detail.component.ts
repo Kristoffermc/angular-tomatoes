@@ -34,12 +34,13 @@ export class DetailComponent implements OnInit {
 
   updateValue = '50';
   updates = [
-    {value: '25'},
-    {value: '50'},
-    {value: '100'},
-    {value: '200'},
-    {value: '500'},
-    {value: '1000'}
+    {value: '60', viewValue: '½ time'},
+    {value: '120', viewValue: '1 time'},
+    {value: '240', viewValue: '2 timer'},
+    {value: '480', viewValue: '4 timer'},
+    {value: '960', viewValue: '8 timer'},
+    {value: '1440', viewValue: '12 timer'},
+    {value: '2880', viewValue: '1 dag'}
   ];
 
   constructor(private rest: RestService,
@@ -113,8 +114,12 @@ export class DetailComponent implements OnInit {
     } else {
       console.log('No eventValue');
     }
-    this.rest.getSensorDataByID(this.selectedSensor, this.selectedValue, this.updateValue).toPromise().then(res => {
+
+    const time = Math.floor((Date.now() / 1000) - 86400);
+
+    this.rest.getSensorDataByID(this.selectedSensor, this.selectedValue, this.updateValue, '' + time).toPromise().then(res => {
       this.graphData = res;
+      console.log(this.graphData);
     }).then(() => {
       const dataMap = [];
       this.graphData.data.forEach(d => {
