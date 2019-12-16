@@ -18,7 +18,7 @@ ID: {{selectedValue}}
 <!--   GRAPH STARTS HERE -->
 
 <mat-form-field>
-  <mat-label>Number of data points</mat-label>
+  <mat-label>Choose time interval</mat-label>
   <mat-select (selectionChange)="getSensorData($event)" (input)="updateValue = $event.value">
     <mat-option *ngFor="let u of updates" [value]="u.value">
       {{u.viewValue}}
