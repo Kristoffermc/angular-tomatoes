@@ -29,7 +29,7 @@ ID: {{selectedValue}}
 
 <div *ngIf="graphData">
   <mat-form-field>
-    <mat-select (selectionChange)="getSensorData(10)"
+    <mat-select (selectionChange)="getSensorData(null)"
                 placeholder = "Select sensor"
                 [(ngModel)]= "selectedSensor" name = "Sensor">
       <mat-option *ngFor = "let s of sensors"
